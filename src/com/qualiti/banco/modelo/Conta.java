@@ -11,10 +11,35 @@ public class Conta {
 	private TipoConta tipo;
 	private Cliente cliente;
 	
-	public void creditar(double valor){
-		saldo = saldo+valor;
+	public Conta(){
+		saldo = 1000;
 	}
 	
+	public Conta(String numero){
+		this.numero = numero;
+		
+	}
+	
+	public void transferir(Conta contaDestino, double valor){
+		if(valor <= saldo){
+		debitar(valor);
+		contaDestino.creditar(valor);
+		}else{
+			System.out.println("saldo insuficiente");
+		}
+	}
+	
+	public void creditar(double valor){
+		saldo = saldo + valor;
+	}
+	public void debitar(double valor){
+		if(valor <= saldo){
+			saldo = saldo - valor;
+		}else{
+			System.out.println("saldo insuficiente");
+		}
+		
+	}
 	public String getNumero() {
 		return numero;
 	}
