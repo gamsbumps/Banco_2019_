@@ -5,7 +5,7 @@ package com.qualiti.banco.modelo;
 public class ContaBonus extends Conta {
 
 	private double bonus;
-	@Override //redefinição da classe pai
+	@Override //redefinição de metodo da classe pai
 	public void creditar(double valor){
 		bonus = bonus + valor*0.1;
 		super.creditar(valor);

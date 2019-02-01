@@ -1,15 +1,28 @@
 package com.qualiti.banco.modelo;
-//conta com numero e saldo
+//conta com numero e saldo. dois clientes vao ser iguais quando
 public class TesteBanco {
 	public static void main(String[] args) {
 		
-		Conta cont = new Conta();
+		Conta cont = new Conta("1231");
 		
-		cont.setNumero("31231-2");
-		cont.setSaldo(500);
+		Cliente cli = new Cliente("Ana Maria", "088");
 		
-		cont.creditar(1000);
-		cont.debitar(1000);
+		cont.setSaldo(2000);
+		cont.setCliente(cli);
+		
+		System.out.println(cont);
+		
+		Conta c3 = new Conta("3333");
+		
+		Conta c4 = new Conta("1111-3");
+		
+		if(c3.equals(c4)){
+			System.out.println("c3 e c4 são iguais");
+		}else{
+			System.out.println("c3 e c4 são diferentes");
+		}
+		
+		
 		
 		Conta cont2 = new Conta();
 		
@@ -18,11 +31,17 @@ public class TesteBanco {
 		cont2.debitar(10000);
 		System.out.println(cont2.getSaldo());
 		
-		Conta c3 = new Conta("3333");
 		
-		Cliente cli = new Cliente("Ana Maria", "088");
+		
+		
 		
 		Cliente cli2 = new Cliente();
+		
+		if(cli.equals(cli2)){
+			System.out.println("mesmo cliente");
+		}else{
+			System.out.println("clientes diferentes");
+		}
 		
 		
 		cont.setSaldo(1000);

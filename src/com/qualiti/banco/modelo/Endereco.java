@@ -9,8 +9,60 @@ public class Endereco {
 	private String cidade;
 	private String cep;
 	private String uf;
+	
+//ctrl shitf c para comentar	
+	
+	
+//	public boolean enquals(Object obj){
+//		if(obj instanceof Endereco){
+//			
+//			Endereco end = (Endereco)obj;
+//			
+//			return numero.equals(end.getNumero())&&
+//					cep.equals(end.getCep())&&
+//					complemento.equals(end.getComplemento());
+//		}
+//		return false;
+//	}
+	
+	
 	public String getLogradouro() {
 		return logradouro;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cep == null) ? 0 : cep.hashCode());
+		result = prime * result + ((complemento == null) ? 0 : complemento.hashCode());
+		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Endereco other = (Endereco) obj;
+		if (cep == null) {
+			if (other.cep != null)
+				return false;
+		} else if (!cep.equals(other.cep))
+			return false;
+		if (complemento == null) {
+			if (other.complemento != null)
+				return false;
+		} else if (!complemento.equals(other.complemento))
+			return false;
+		if (numero == null) {
+			if (other.numero != null)
+				return false;
+		} else if (!numero.equals(other.numero))
+			return false;
+		return true;
 	}
 	public void setLogradouro(String logradouro) {
 		this.logradouro = logradouro;

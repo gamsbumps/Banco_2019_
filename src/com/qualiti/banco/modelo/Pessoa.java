@@ -2,7 +2,7 @@ package com.qualiti.banco.modelo;
 
 import java.time.LocalDate;
 
-public class Pessoa {
+public abstract class Pessoa {
 	
 
 	private String nome;
@@ -14,6 +14,20 @@ public class Pessoa {
 	private String senha;
 	private String email;
 	
+//	@Override 
+//	public boolean equals(Object obj){
+//		if(obj instanceof Pessoa){
+//			
+//			Pessoa pes = (Pessoa)obj;
+//			
+//			
+//			return cpf.equals(((Pessoa) pes).getCpf());
+//			
+//			
+//		}
+//		return false;
+//	}
+	
 	public Pessoa(String cpf,String nome){
 		this.cpf = cpf;
 		this.nome = nome;
@@ -24,7 +38,38 @@ public class Pessoa {
 	public Pessoa() {
 		
 	}
+	
+	
 	 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pessoa other = (Pessoa) obj;
+		if (cpf == null) {
+			if (other.cpf != null)
+				return false;
+		} else if (!cpf.equals(other.cpf))
+			return false;
+		return true;
+	}
+
+
+
 	public String getNome() {
 		return nome;
 	}
