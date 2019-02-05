@@ -2,6 +2,8 @@ package com.qualiti.banco.modelo;
 
 import java.time.LocalDate;
 
+import com.qualiti.banco.excecoes.BancoException;
+
 public class Conta {
 
 	private String numero;
@@ -9,19 +11,19 @@ public class Conta {
 	private LocalDate dataAbertura;
 	private TipoConta tipo;
 	private Cliente cliente;
-	
-//	@Override
-//	public boolean equals(Object obj) {
-//		if (obj instanceof Conta) {
-//
-//			Conta c = (Conta) obj;
-//
-//			return numero.equals(c.getNumero());
-//		}
-//
-//		return false;
-//
-//	}
+
+	// @Override
+	// public boolean equals(Object obj) {
+	// if (obj instanceof Conta) {
+	//
+	// Conta c = (Conta) obj;
+	//
+	// return numero.equals(c.getNumero());
+	// }
+	//
+	// return false;
+	//
+	// }
 
 	public Conta() {
 		saldo = 1000;
@@ -32,42 +34,37 @@ public class Conta {
 
 	}
 
-	public void transferir(Conta contaDestino, double valor) {
-		if (valor <= saldo) {
-			debitar(valor);
-			contaDestino.creditar(valor);
-		} else {
-			System.out.println("saldo insuficiente");
-		}
-	}
-	
-
-
 	public void creditar(double valor) {
 		saldo = saldo + valor;
 	}
 
-	public void debitar(double valor) {
+	public void debitar(double valor) throws BancoException {
 		if (valor <= saldo) {
 			saldo = saldo - valor;
 		} else {
-			System.out.println("saldo insuficiente");
+			throw new BancoException("Saldo insuficiente");
+
 		}
 
 	}
-	
-	public String toString(){
+
+	public void transferir(Conta contaDestino, double valor) throws BancoException {
+
+		debitar(valor);
+		contaDestino.creditar(valor);
+
+	}
+
+	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		
+
 		sb.append("descrição conta:\n");
 		sb.append("Numero: ").append(this.numero).append("\n");
 		sb.append("Saldo: ").append(this.saldo).append("\n");
 		sb.append("Cliente: ").append(this.cliente.getCpf()).append("\n");
-		
+
 		return sb.toString();
 	}
-	
-	
 
 	@Override
 	public int hashCode() {

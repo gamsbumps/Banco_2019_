@@ -1,7 +1,10 @@
 package com.qualiti.banco.modelo;
+
+import com.qualiti.banco.excecoes.BancoException;
+
 //conta com numero e saldo. dois clientes vao ser iguais quando
 public class TesteBanco {
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		
 		Conta cont = new Conta("1231");
 		
@@ -28,8 +31,16 @@ public class TesteBanco {
 		
 		cont2.setNumero("3333-s");
 		cont2.setSaldo(30000);
-		cont2.debitar(10000);
 		System.out.println(cont2.getSaldo());
+		try {
+			cont2.debitar(10000);
+			System.out.println("Debito realizado com sucesso");
+		} catch (BancoException e) {
+			System.out.println(e.getMessage());
+		}finally{
+			System.out.println("Volte sempre");
+		}
+		
 		
 		
 		
@@ -47,12 +58,22 @@ public class TesteBanco {
 		cont.setSaldo(1000);
 		cont2.setSaldo(1000);
 		
-		cont.transferir(cont2, 500);
+		try {
+			cont.transferir(cont2, 500);
+		} catch (BancoException e) {
+			
+			e.printStackTrace();
+		}
 		System.out.println("saldo conta 2: " +cont2.getSaldo());
 		
 		System.out.println("saldo conta 1: "+cont.getSaldo());
 		
-		cont.transferir(cont2, 1000);
+		try {
+			cont.transferir(cont2, 1000);
+		} catch (BancoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("saldo conta 2: " +cont2.getSaldo());
 		
 		System.out.println("saldo conta 1: "+cont.getSaldo());
