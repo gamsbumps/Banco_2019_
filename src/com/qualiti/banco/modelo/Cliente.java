@@ -42,6 +42,12 @@ public class Cliente extends Pessoa implements Comparable<Cliente> {
 		}
 		
 	}
+
+	@Override
+	public String getChave() {
+		
+		return getCpf();
+	}
 	
 
 }

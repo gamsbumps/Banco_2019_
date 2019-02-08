@@ -19,7 +19,7 @@ public class BancoTeste {
 		
 		IFachada fachada =  Fachada.getFachada();
 		
-		IFachada fachada1 =  Fachada.getFachada();//qualquer outra que chamar, virá da primeira ja criada
+		//IFachada fachada1 =  Fachada.getFachada();qualquer outra que chamar, virá da primeira ja criada
 		
 		try {
 			fachada.inserirConta(c);

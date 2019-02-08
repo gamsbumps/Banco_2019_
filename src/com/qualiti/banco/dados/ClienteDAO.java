@@ -2,10 +2,7 @@ package com.qualiti.banco.dados;
 
 import com.qualiti.banco.modelo.Cliente;
 
-public interface ClienteDAO {
+public interface ClienteDAO extends GenericDAO<Cliente, String> {
 
-	void inserir(Cliente cliente);
-	void atualizar(Cliente cliente);
-	void remover(String cpf);
-	Cliente procurar(String cpf);
+	
 }
