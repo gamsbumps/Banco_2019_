@@ -1,7 +1,7 @@
 package com.qualiti.banco.modelo;
 
 import java.util.Arrays;
-
+//collections sort só ordena se ouver implementação do comparable
 public class Cliente extends Pessoa implements Comparable<Cliente> {
 	
 	public Cliente(){
