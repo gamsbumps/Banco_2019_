@@ -4,6 +4,10 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class BancoTelaPrincipal {
 
@@ -43,5 +47,42 @@ public class BancoTelaPrincipal {
 		
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
+		
+		JMenu mnClientes = new JMenu("Clientes");
+		menuBar.add(mnClientes);
+		
+		JMenuItem mntmCadastrar = new JMenuItem("Cadastrar");
+		mntmCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				ClienteCadastrarPanel cadastrarPanel = new ClienteCadastrarPanel();
+				frame.setContentPane(cadastrarPanel);;
+				frame.revalidate();
+			}
+		});
+		mnClientes.add(mntmCadastrar);
+		
+		JMenuItem mntmVisualizar = new JMenuItem("Visualizar");
+		mnClientes.add(mntmVisualizar);
+		
+		JMenu mnContas = new JMenu("Contas");
+		menuBar.add(mnContas);
+		
+		JMenuItem mntmCadastrar_1 = new JMenuItem("Cadastrar");
+		mnContas.add(mntmCadastrar_1);
+		
+		JMenuItem mntmVisualizar_1 = new JMenuItem("Visualizar");
+		mnContas.add(mntmVisualizar_1);
+		
+		JMenu mnTransaes = new JMenu("Transa\u00E7\u00F5es");
+		menuBar.add(mnTransaes);
+		
+		JMenuItem mntmMovimentaes = new JMenuItem("Movimenta\u00E7\u00F5es");
+		mnTransaes.add(mntmMovimentaes);
+		
+		JMenuItem mntmExtrato = new JMenuItem("Extrato");
+		mnTransaes.add(mntmExtrato);
+		
+		frame.setLocationRelativeTo(null);
 	}
 }
