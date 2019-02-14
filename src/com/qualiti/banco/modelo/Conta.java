@@ -80,6 +80,8 @@ public class Conta extends BancoEntity<String> {
 			return true;
 		if (obj == null)
 			return false;
+		if(!(obj instanceof Conta))
+			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		Conta other = (Conta) obj;

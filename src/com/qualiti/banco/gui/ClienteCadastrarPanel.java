@@ -284,22 +284,17 @@ public class ClienteCadastrarPanel extends JPanel {
 		btnRemover = new JButton("Remover");
 		btnRemover.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+
 				String cpf = cpfTxt.getText();
 
-				int escolha = JOptionPane.showConfirmDialog(
-						null, "Cliente cadastrado. Deseja remover",
-						"Remover cliente",
+				int escolha = JOptionPane.showConfirmDialog(null, "Conta cadastrada. Deseja remover", "Remover cliente",
 						JOptionPane.YES_NO_OPTION);
-				
+
 				if (escolha == JOptionPane.YES_OPTION) {
 					try {
 						Fachada.getFachada().removerCliente(cpf);
-						JOptionPane.showMessageDialog(
-								null, "Cliente removido com sucesso",
-								"Remover cliente",
+						JOptionPane.showMessageDialog(null, "Cliente removido com sucesso", "Remover cliente",
 								JOptionPane.INFORMATION_MESSAGE);
-						limparCampos();
-						habilitarDesabilitarCampos(false);
 
 						btnRemover.setEnabled(false);
 						btnAtualizar.setEnabled(false);
@@ -360,9 +355,7 @@ public class ClienteCadastrarPanel extends JPanel {
 					cliente.setEndereco(end);
 
 					Fachada.getFachada().inserirCliente(cliente);
-					JOptionPane.showMessageDialog(
-							null, "Cliente cadastrado com sucesso",
-							"Cadastrar cliente",
+					JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso", "Cadastrar cliente",
 							JOptionPane.INFORMATION_MESSAGE);
 
 					limparCampos();
@@ -370,15 +363,11 @@ public class ClienteCadastrarPanel extends JPanel {
 					habilitarDesabilitarCampos(false);
 
 				} catch (BancoException ex) {
-					JOptionPane.showMessageDialog(
-							null, ex.getMessage(),
-							"Cadastrar Cliente",
+					JOptionPane.showMessageDialog(null, ex.getMessage(), "Cadastrar Cliente",
 							JOptionPane.ERROR_MESSAGE);
 
 				} catch (DateTimeParseException ex) {
-					JOptionPane.showMessageDialog(
-							null, "Data inválida",
-							"Cadastrar Cliente",
+					JOptionPane.showMessageDialog(null, "Data inválida", "Cadastrar Cliente",
 							JOptionPane.ERROR_MESSAGE);
 
 				}
@@ -435,32 +424,26 @@ public class ClienteCadastrarPanel extends JPanel {
 						cliente.setEndereco(end);
 
 						Fachada.getFachada().atualizarCliente(cliente);
-						JOptionPane.showMessageDialog(
-								null, "Cliente atualizado com sucesso",
-								"Atualizar cliente",
+						JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso", "Atualizar cliente",
 								JOptionPane.INFORMATION_MESSAGE);
 
 						limparCampos();
 
 						habilitarDesabilitarCampos(false);
-					}else{
-						JOptionPane.showMessageDialog(
-								null, "Cliente nao existe",
-								"Atualizar cliente",
+					} else {
+						JOptionPane.showMessageDialog(null, "Cliente nao existe", "Atualizar cliente",
 								JOptionPane.INFORMATION_MESSAGE);
 					}
 				} catch (BancoException ex) {
-					JOptionPane.showMessageDialog
-					(null, ex.getMessage(), "Atualizar cliente",
+					JOptionPane.showMessageDialog(null, ex.getMessage(), "Atualizar cliente",
 							JOptionPane.ERROR_MESSAGE);
 
 				} catch (DateTimeParseException ex) {
-					JOptionPane.showMessageDialog(
-							null, "Data inválida", "Atualizar cliente",
+					JOptionPane.showMessageDialog(null, "Data inválida", "Atualizar cliente",
 							JOptionPane.ERROR_MESSAGE);
 
 				}
-				
+
 				btnAtualizar.setEnabled(false);
 				btnRemover.setEnabled(false);
 
