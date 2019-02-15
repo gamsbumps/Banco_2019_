@@ -79,6 +79,13 @@ public class BancoTelaPrincipal {
 		menuBar.add(mnTransaes);
 		
 		JMenuItem mntmMovimentaes = new JMenuItem("Movimenta\u00E7\u00F5es");
+		mntmMovimentaes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MovimentaçãoPanel movimentaçõespanel = new MovimentaçãoPanel();
+				frame.setContentPane(movimentaçõespanel);
+				frame.revalidate();
+			}
+		});
 		mnTransaes.add(mntmMovimentaes);
 		
 		JMenuItem mntmExtrato = new JMenuItem("Extrato");

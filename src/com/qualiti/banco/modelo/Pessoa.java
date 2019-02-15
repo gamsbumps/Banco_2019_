@@ -13,6 +13,8 @@ public abstract class Pessoa extends BancoEntity<String> {
 	private String login;
 	private String senha;
 	private String email;
+	private TipoPessoa tipo;
+	
 	
 //	@Override 
 //	public boolean equals(Object obj){
@@ -117,6 +119,18 @@ public abstract class Pessoa extends BancoEntity<String> {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+
+
+	public TipoPessoa getTipo() {
+		return tipo;
+	}
+
+
+
+	public void setTipo(TipoPessoa tipo) {
+		this.tipo = tipo;
 	}
 	
 
