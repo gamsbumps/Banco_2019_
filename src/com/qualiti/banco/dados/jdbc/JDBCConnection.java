@@ -16,7 +16,7 @@ public class JDBCConnection {
 			
 			//jdbc:postgresql://host:port/database
 			
-			String url = "jdbc:postgresql://localhost:5433/Banco";
+			String url = "jdbc:postgresql://localhost:5432/Banco";
 			String user = "postgres";
 			String pass = "postgres";
 			
